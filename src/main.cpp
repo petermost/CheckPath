@@ -1,4 +1,4 @@
-#include <QSet>
+#include "Util.hpp"
 #include <QFile>
 #include <QTextStream>
 #include <QCoreApplication>
@@ -10,19 +10,6 @@ QTextStream out( stdout );
 QTextStream err( stderr );
 
 static const QString PATH_VARIABLE_NAME = "Path";
-
-QStringList findDuplicates( const QStringList &list ) {
-	QStringList duplicates;
-	QSet< QString > uniques;
-
-	for ( const QString &s : list ) {
-		if ( !uniques.contains( s ))
-			uniques.insert( s );
-		else
-			duplicates.append( s );
-	}
-	return duplicates;
-}
 
 
 QStringList findMissingPaths( const QStringList &paths ) {

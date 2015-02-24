@@ -6,6 +6,7 @@
 
 TEMPLATE = subdirs
 
-SUBDIRS += ./main.pro ../CppAidKit/AidKit.pro
+SUBDIRS += ./src/main.pro ../CppAidKit/AidKit.pro \
+    test
 
 main.pro.depends = AidKit.pro
