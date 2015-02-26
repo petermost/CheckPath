@@ -8,7 +8,7 @@ QT       += testlib
 
 QT       -= gui
 
-TARGET = UtilTest
+TARGET = CheckPathTests
 CONFIG   += c++11 console
 CONFIG   -= app_bundle
 
