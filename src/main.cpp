@@ -3,6 +3,7 @@
 #include <QTextStream>
 #include <QCoreApplication>
 #include <QProcessEnvironment>
+#include <pera_software/company/PERA.hpp>
 
 using namespace std;
 
@@ -24,6 +25,8 @@ QStringList findMissingPaths( const QStringList &paths ) {
 
 int main(int argc, char *argv[]) {
 	QCoreApplication a(argc, argv);
+
+	out << pera_software::company::PERA::FULL_NAME << endl;
 
 	QProcessEnvironment environment = QProcessEnvironment::systemEnvironment();
 	QStringList searchPath = environment.value( PATH_VARIABLE_NAME ).split( ';' );
