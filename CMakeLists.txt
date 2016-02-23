@@ -1,12 +1,12 @@
 cmake_minimum_required( VERSION 3.0 )
-set( CMAKE_WARN_DEPRECATED ON )
-set( CMAKE_VERBOSE_MAKEFILE ON )
+
+include( ../CppAidKit/cmake/set_general_cmake_options.cmake )
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 
 project( CheckPath )
-add_compile_options( -std=c++14 -w -Wall -Wextra -pedantic )
+include( ../CppAidKit/cmake/add_gcc_compile_options.cmake )
 
 add_executable( CheckPath
 	src/main.cpp
