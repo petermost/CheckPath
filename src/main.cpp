@@ -1,4 +1,5 @@
 #include "Util.hpp"
+#include <QDir>
 #include <QFile>
 #include <QTextStream>
 #include <QCoreApplication>
@@ -29,7 +30,7 @@ int main(int argc, char *argv[]) {
 	out << pera_software::company::PERA::FULL_NAME << endl;
 
 	QProcessEnvironment environment = QProcessEnvironment::systemEnvironment();
-	QStringList searchPath = environment.value( PATH_VARIABLE_NAME ).split( ';' );
+	QStringList searchPath = environment.value( PATH_VARIABLE_NAME ).split( QDir::listSeparator() );
 	if ( searchPath.isEmpty() ) {
 		err << "Environment variable '" << PATH_VARIABLE_NAME << "' not found!" << endl;
 		return EXIT_FAILURE;
@@ -55,7 +56,7 @@ int main(int argc, char *argv[]) {
 			err << "Missing path: '" << nonExistingPath << "' in PATH found!" << endl;
 	}
 
-	// Show non-existing path from the environmen which end with '_HOME':
+	// Show non-existing path from the environment which end with '_HOME':
 
 	searchPath.clear();
 	for ( const QString &key : environment.keys() ) {
@@ -67,10 +68,10 @@ int main(int argc, char *argv[]) {
 
 	missingPaths = findMissingPaths( searchPath );
 	if ( missingPaths.isEmpty() )
-		out << "No missing paths in ENVIRONMENT found." << endl;
+		out << "No missing '_HOME' paths in environment found." << endl;
 	else {
 		for ( const QString missingPath : missingPaths )
-			err << "Missing path: '" << missingPath << "' in ENVIRONMENT found!" << endl;
+			err << "Missing '_HOME' path: '" << missingPath << "' in environment found!" << endl;
 	}
 
 	return EXIT_SUCCESS;
